@@ -67,17 +67,13 @@
   "gnetId": 10000,
   "graphTooltip": 1,
   "id": null,
-  "iteration": 1637941537818,
+  "iteration": 1637942240347,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
+      "datasource": "${DS_PROMETHEUS}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -867,7 +863,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${DS_PROMETHEUS}",
       "decimals": 2,
       "fieldConfig": {
         "defaults": {
@@ -1148,7 +1144,8 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum (container_memory_usage_bytes{image!=\"\",k3s_io_hostname=~\"^$Node$\"}) by (container)",
+          "exemplar": true,
+          "expr": "sum (container_memory_usage_bytes{pod!=\"\",k3s_io_hostname=~\"^$Node$\"}) by (pod)",
           "format": "time_series",
           "interval": "10s",
           "intervalFactor": 1,
@@ -1263,7 +1260,8 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_cpu_user_seconds_total{image!=\"\",k3s_io_hostname=~\"^$Node$\"}[$interval])) by (container)",
+          "exemplar": true,
+          "expr": "sum(rate(container_cpu_user_seconds_total{pod!=\"\",k3s_io_hostname=~\"^$Node$\"}[$interval])) by (pod)",
           "format": "time_series",
           "instant": false,
           "interval": "10s",
@@ -1321,11 +1319,7 @@
     },
     {
       "collapsed": true,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
+      "datasource": "${DS_PROMETHEUS}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1744,5 +1738,5 @@
   "timezone": "browser",
   "title": "Cluster Monitoring for Kubernetes",
   "uid": "JABGX_-mz",
-  "version": 20
+  "version": 2
 }
