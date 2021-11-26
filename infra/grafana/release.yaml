@@ -38,8 +38,7 @@ spec:
     dashboards:
       default:
         cluster-monitoring-for-kubernetes:
-          gnetId: 10000
-          revision: 1
+          url: https://raw.githubusercontent.com/valerauko/flux-playground/main/infra/grafana/dashboard.json
           datasource: Prometheus
     datasources:
       datasources.yaml:
