@@ -24,8 +24,8 @@ spec:
       - grafana-piechart-panel
     dashboards:
       cluster-monitoring-for-kubernetes:
-        gnetId: 10000
-        revision: 1
+        gnetId: "10000"
+        revision: "1"
         datasource: Prometheus
     datasources:
       datasources.yaml:
