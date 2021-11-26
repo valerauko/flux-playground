@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
   - grafana
   - longhorn
+  - metrics-server
   - prometheus
   - sources
