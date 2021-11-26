@@ -1,0 +1,40 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana
+spec:
+  releaseName: grafana
+  chart:
+    spec:
+      chart: longhorn
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: flux-system
+      version: "*"
+  interval: "1h"
+  install:
+    remediation:
+      retries: 3
+  values:
+    persistence:
+      enabled: true
+      type: statefulset
+    plugins:
+      - grafana-piechart-panel
+    dashboards:
+      cluster-monitoring-for-kubernetes:
+        gnetId: 10000
+        revision: 1
+        datasource: Prometheus
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - name: Prometheus
+            type: prometheus
+            url: http://prometheus-server.prometheus.svc
+            isDefault: true
+          - name: Loki
+            type: loki
+            url: http://loki:3100
