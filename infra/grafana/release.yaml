@@ -20,7 +20,7 @@ spec:
     persistence:
       enabled: true
       type: statefulset
-      storageClass: longhorn
+      storageClassName: longhorn
     plugins:
       - grafana-piechart-panel
     # dashboards:
