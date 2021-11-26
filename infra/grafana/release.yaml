@@ -6,7 +6,7 @@ spec:
   releaseName: grafana
   chart:
     spec:
-      chart: longhorn
+      chart: grafana
       sourceRef:
         kind: HelmRepository
         name: grafana
