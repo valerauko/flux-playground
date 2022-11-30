@@ -7,3 +7,4 @@ resources:
   - longhorn.yaml
   - prometheus.yaml
   - traefik.yaml
+  - weave.yaml
