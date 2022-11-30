@@ -20,14 +20,10 @@ spec:
     server:
       global:
         scrape_interval: 30s
-      persistentVolume:
-        storageClass: longhorn
       statefulSet:
         enabled: true
       retention: "168h"
     alertmanager:
-      persistentVolume:
-        storageClass: longhorn
       statefulSet:
         enabled: true
     networkPolicy:
