@@ -19,7 +19,7 @@ spec:
   values:
     persistence:
       enabled: true
-      type: statefulset
+      type: StatefulSet
     plugins:
       - grafana-piechart-panel
     dashboardProviders:
