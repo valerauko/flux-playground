@@ -4,5 +4,4 @@ resources:
   - gitops-dash
   - grafana
   - metrics-server
-  - prometheus
   - sources
