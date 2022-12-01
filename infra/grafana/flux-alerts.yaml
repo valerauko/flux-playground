@@ -1,0 +1,63 @@
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Alert
+metadata:
+  name: app-events
+  namespace: grafana
+spec:
+  providerRef:
+    name: grafana
+  eventSeverity: info
+  eventSources:
+    - kind: Kustomization
+      name: '*'
+    - kind: HelmRelease
+      name: '*'
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Alert
+metadata:
+  name: app-errors
+  namespace: grafana
+spec:
+  providerRef:
+    name: grafana
+  eventSeverity: error
+  eventSources:
+    - kind: Kustomization
+      name: '*'
+    - kind: HelmRelease
+      name: '*'
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Alert
+metadata:
+  name: system-events
+  namespace: grafana
+spec:
+  providerRef:
+    name: grafana
+  eventSeverity: info
+  eventSources:
+    - kind: GitRepository
+      name: '*'
+    - kind: HelmChart
+      name: '*'
+    - kind: HelmRepository
+      name: '*'
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Alert
+metadata:
+  name: system-errors
+  namespace: grafana
+spec:
+  providerRef:
+    name: grafana
+  eventSeverity: error
+  eventSources:
+    - kind: GitRepository
+      name: '*'
+    - kind: HelmChart
+      name: '*'
+    - kind: HelmRepository
+      name: '*'
