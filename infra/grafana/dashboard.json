@@ -240,7 +240,7 @@
       "pluginVersion": "8.2.5",
       "targets": [
         {
-          "expr": "sum (rate (node_cpu_seconds_total{mode!=\"idle\",kubernetes_node=~\"$Node\"}[$interval])) / sum (machine_cpu_cores{kubernetes_io_hostname=~\"^$Node$\"}) * 100 ",
+          "expr": "sum (rate (node_cpu_seconds_total{mode!=\"idle\",node=~\"$Node\"}[$interval])) / sum (machine_cpu_cores{kubernetes_io_hostname=~\"^$Node$\"}) * 100 ",
           "format": "time_series",
           "instant": false,
           "interval": "10s",
@@ -564,7 +564,7 @@
       "pluginVersion": "8.2.5",
       "targets": [
         {
-          "expr": "avg (rate (node_cpu_seconds_total{mode=\"user\",kubernetes_node=~\"$Node\"}[$interval])) ",
+          "expr": "avg (rate (node_cpu_seconds_total{mode=\"user\",node=~\"$Node\"}[$interval])) ",
           "format": "time_series",
           "instant": false,
           "interval": "10s",
@@ -648,7 +648,7 @@
       "pluginVersion": "8.2.5",
       "targets": [
         {
-          "expr": "max (rate (node_cpu_seconds_total{mode=\"steal\",kubernetes_node=~\"$Node\"}[$interval]))",
+          "expr": "max (rate (node_cpu_seconds_total{mode=\"steal\",node=~\"$Node\"}[$interval]))",
           "format": "time_series",
           "instant": false,
           "interval": "10s",
@@ -1031,7 +1031,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(node_cpu_seconds_total{mode!=\"idle\", mode!=\"steal\"}[120s])) by (kubernetes_node)",
+          "expr": "sum(irate(node_cpu_seconds_total{mode!=\"idle\", mode!=\"steal\"}[120s])) by (node)",
           "format": "time_series",
           "instant": false,
           "interval": "10s",
